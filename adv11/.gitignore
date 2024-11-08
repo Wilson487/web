@@ -1,0 +1,10 @@
+*.env
+*.mp4
+*.gif
+
+.idea/
+.vscode/
+__pycachhe__/
+
+
+https://www.youtube.com/watch?v=VWwWWmwbtF0
