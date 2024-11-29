@@ -1,4 +1,6 @@
 import requests
+import openai
+import discord
 ##
 
 class WeatherAPI:
@@ -49,3 +51,14 @@ class WeatherAPI:
             embed.add_field(name="氣溫", value=f"{current_temperature}度{unit_symbol}",inline=False)
             return embed
         return None
+    async def create_forecast_embeds(self, city, forecast_info):
+        unit_symbol = "C" if self.units == "metric" else "F"
+        embeds = []
+        if "list" in forecast_info:
+            forecast_list = forecast_info["list"][:10]
+            for forecast in forecast_list:
+                dt_txt=forecast["dt_txt"]
+                temp=forecast["main"]["temp"]
+                description=forecast["weather"][0]["description"]
+                icon_code=forecast["weather"][0]["icon"]
+                icon_url=self.get_icon_url(icon_code)
