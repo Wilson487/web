@@ -1,5 +1,5 @@
 import requests
-
+##
 
 class WeatherAPI:
     def __init__(self, api_key, units="metric", lang="zh_tw"):
